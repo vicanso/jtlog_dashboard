@@ -1,0 +1,52 @@
+@import 'nib'
+html, body
+  height 100%
+  width 100%
+.filterPage
+  height 100%
+  width 100%
+  overflow hidden
+  $leftContainerWidth = 200px
+  .leftContainer
+    width $leftContainerWidth
+    position relative
+    height 100%
+    overflow hidden
+    .appList
+      margin 0
+      padding 0
+      position absolute
+      top 80px
+      left 0
+      right 0
+      bottom 0
+      li
+        padding 5px 10px
+        background-color #f7f7f7
+        border-bottom 1px solid #d0d0d0
+        a
+          display block
+        &:after
+          content '<span>c</span>'
+  .logContainer
+    position absolute
+    left $leftContainerWidth
+    top 0
+    right 0
+    bottom 0
+    padding 10px
+    overflow scroll
+    background-color #111
+    .log
+      font-family 'Inconsolata',Courier,sans-serif
+      color #0c0
+      &.error
+        color #a94442
+      &.warn
+        color #f0ad4e
+      > span
+        margin 0 5px
+      .time
+        color grey
+      .name
+        color #aec7e8

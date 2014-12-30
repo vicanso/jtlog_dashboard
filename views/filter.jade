@@ -1,0 +1,17 @@
+extends ./layout
+
+mixin AppList
+  if viewData.apps
+    ul.appList
+      each app in viewData.apps
+        li: a(href='javascript:;', ng-click='filterPage.selected("#{app}")') #{app}
+  
+
+block bodyContainer
+  .filterPage(ng-controller='FilterPage as filterPage')
+    .leftContainer
+      +AppList()
+    a(href='javascript:;', ng-click='filterPage.filter()') filter
+    .logContainer: .content(jt-log-view='filterPage.result')
+  - importer.import('/service/jtlog.js', '/page/filter/directive.js', '/page/filter/controller.js');
+  - importer.import('/css/filter.css');

@@ -1,0 +1,144 @@
+@import 'nib'
+html, body
+  height 100%
+  width 100%
+
+appList() 
+  .appList
+    margin 0
+    padding 0
+    position absolute
+    top 120px
+    left 0
+    right 0
+    bottom 0
+    li
+      padding 5px 10px
+      &:nth-child(even)
+        background-color #222
+      label
+        cursor pointer
+        color #337ab7
+        display block
+        
+settingContainer()
+  .layouts
+    border-bottom 1px solid #333
+    .layout
+      display inline-block
+      width 33.33%
+      padding 5px 0
+      text-indent 5px
+      cursor pointer
+logListContainer()
+  .logListContainer
+    // 两行
+    &.layout1 .logContainer
+      height 50%
+    // 三行
+    &.layout2 .logContainer
+      height 33.33%
+    // 四行
+    &.layout3 .logContainer
+      height 25%
+    // 五行
+    &.layout4 .logContainer
+      height 20%
+    // 两列
+    &.layout5 .logContainer
+      width 50%
+    // 三列
+    &.layout6 .logContainer
+      height 100%
+      width 33.33%
+    // 一行两列
+    &.layout7 .logContainer
+      height 50%
+      width 50%
+      &:nth-child(1)
+        width 100%
+    // 二行两列
+    &.layout8 .logContainer
+      height 33.33%
+      &:nth-child(3), &:nth-child(4)
+        width 50%
+    // 三行两列
+    &.layout9 .logContainer
+      height 25%
+      &:nth-child(4), &:nth-child(5)
+        width 50%
+        
+    .logContainer
+      padding 10px
+      position relative
+      float left
+      height 100%
+      width 100%
+      .logContent
+        position absolute
+        left 10px
+        right 0
+        bottom 0
+        top 10px
+        border 1px solid #333
+        overflow scroll
+        // visibility hidden
+        .log
+          font-family Menlo,Monaco,Consolas,"Courier New",monospace
+          color #0c0
+          &.error
+            color #a94442
+          &.warn
+            color #f0ad4e
+          > span
+            margin 0 5px
+          .time
+            color grey
+          .name
+            color #aec7e8
+    
+
+.filterPage
+  height 100%
+  width 100%
+  overflow hidden
+  $leftContainerWidth = 200px
+  background-color #111
+  .leftContainer
+    width $leftContainerWidth
+    position relative
+    height 100%
+    overflow hidden
+    border-right 1px solid #333
+    appList()
+    settingContainer()
+  .rightContainer
+    position absolute
+    left $leftContainerWidth
+    top 0
+    right 10px
+    bottom 10px
+    overflow hidden
+  logListContainer()
+
+  // .logContainer
+    // position absolute
+    // left $leftContainerWidth + 20
+    // top 0
+    // right 0
+    // bottom 0
+    // padding 10px
+    // overflow scroll
+    // .log
+    //   font-family Menlo,Monaco,Consolas,"Courier New",monospace
+    //   color #0c0
+    //   &.error
+    //     color #a94442
+    //   &.warn
+    //     color #f0ad4e
+    //   > span
+    //     margin 0 5px
+    //   .time
+    //     color grey
+    //   .name
+    //     color #aec7e8

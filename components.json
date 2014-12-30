@@ -1,0 +1,57 @@
+{
+  "index": {
+    "css": [
+      "/css/home.css"
+    ],
+    "js": [
+      "/component/debug.js",
+      "/component/angular.js",
+      "/component/angular-local-storage.js",
+      "/service/utils.js",
+      "/service/http_log.js",
+      "/service/debug.js",
+      "/js/global.js",
+      "/service/jtlog.js",
+      "/page/home/directive.js",
+      "/page/home/controller.js"
+    ],
+    "modifiedAt": "2014-12-28 11:54:10"
+  },
+  "filter": {
+    "css": [
+      "/css/filter.css"
+    ],
+    "js": [
+      "/component/debug.js",
+      "/component/angular.js",
+      "/component/angular-local-storage.js",
+      "/service/utils.js",
+      "/service/http_log.js",
+      "/service/debug.js",
+      "/js/global.js",
+      "/service/jtlog.js",
+      "/page/filter/directive.js",
+      "/page/filter/controller.js"
+    ],
+    "modifiedAt": "2014-12-27 11:57:28"
+  },
+  "home": {
+    "css": [
+      "/css/home.css"
+    ],
+    "js": [
+      "/component/debug.js",
+      "/component/angular.js",
+      "/component/angular-local-storage.js",
+      "/service/utils.js",
+      "/service/http_log.js",
+      "/service/debug.js",
+      "/js/global.js",
+      "/component/socket.io.js",
+      "/page/home/service.js",
+      "/page/home/directive.js",
+      "/page/home/controller.js"
+    ],
+    "modifiedAt": "2014-12-29 17:17:41"
+  }
+}

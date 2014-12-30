@@ -1,0 +1,39 @@
+extends ./layout
+
+mixin AppList
+  if viewData.apps
+    ul.appList
+      each app, i in viewData.apps
+        li
+          input.pull-right(type='checkbox', id='_APP_#{i}', ng-click='homePage.toggle("#{app}")')
+          label(for='_APP_#{i}') #{app}
+
+
+mixin Setting
+  .settingContainer
+    //- h3 布局选择
+    .layouts
+      each name, i in viewData.layouts
+        a.layout(href='javascript:;', ng-click='homePage.selectedLayout = #{i}') #{name}
+  //- script#settingTemplate(type='text/template')
+  //-   .input-group
+  //-     span.input-group-addon 显示行数
+  //-     input.form-control(type='text')
+//-   <div class="input-group">
+//-   <span class="input-group-addon" id="basic-addon1">@</span>
+//-   <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+//- </div>
+  
+
+block bodyContainer
+  .filterPage(ng-controller='HomePage as homePage')
+    .leftContainer
+      +Setting()
+      +AppList()
+    .rightContainer.logListContainer.clearfix(jt-layout='homePage.selectedLayout')
+      each i in [0, 1, 2, 3, 4]
+        .logContainer: .logContent(jt-log-view='homePage.result[#{i}]')
+  
+  - importer.import('/component/socket.io.js');
+  - importer.import('/page/home/service.js', '/page/home/directive.js', '/page/home/controller.js');
+  - importer.import('/css/home.css');
