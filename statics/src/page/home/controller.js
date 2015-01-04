@@ -5,7 +5,8 @@
 angular.module('jtApp')
   .controller('HomePage', HomePage);
 
-function HomePage($scope, $http, $element, $timeout, jtlog) {
+function HomePage($scope, $http, $element, $timeout, debug, jtlog) {
+  debug = debug('homePage');
   var self = this;
   //标记是否显示该app的log, [app1, app2]
   self.apps = [];
@@ -29,9 +30,11 @@ function HomePage($scope, $http, $element, $timeout, jtlog) {
     if(!~index){
       apps.push(app);
       getLogs(app, apps.length - 1);
+      debug('add app:%s log', app);
     }else{
       apps.splice(index, 1);
       self.result.splice(index, 1);
+      debug('remove app:%s log', app);
     }
     // getLogs(self.apps);
   };
@@ -62,16 +65,25 @@ function HomePage($scope, $http, $element, $timeout, jtlog) {
     });
   }
 
+  jtlog.emit('setting', 'setting');
+  jtlog.on('log', function(msg){
+    // console.dir(msg);
+  });
 
-  getLogs('test', 0);
+  // getLogs('test', 0);
   // toggle('test');
   // toggle('jtlog_dashboard');
   
   // var socket = io();
 
+  // socket.emit('setting', 'setting');
+  // socket.on('log', function(msg){
+  //   console.dir(msg);
+  // });
+
 }
 
-HomePage.$inject = ['$scope', '$http', '$element', '$timeout', 'jtlog'];
+HomePage.$inject = ['$scope', '$http', '$element', '$timeout', 'debug', 'jtlog'];
 
 
 

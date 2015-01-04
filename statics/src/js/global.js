@@ -51,7 +51,8 @@ app.config(['localStorageServiceProvider', function(localStorageServiceProvider)
 
 
 
-app.run(['$http', '$timeout', '$window', function($http, $timeout, $window){
+app.run(['$http', '$timeout', '$window', 'debug', function($http, $timeout, $window, debug){
+  debug = debug('app.run');
   TIMING.end('js');
   var statistics = function(){
     var result = angular.extend({
@@ -87,7 +88,7 @@ app.run(['$http', '$timeout', '$window', function($http, $timeout, $window){
       });
     };
     fn(angular.element(document.body));
-    console.log('watcher total:' + watchTotal);
+    debug('watcher total:' + watchTotal);
     $timeout(function(){
       checkWatchers();
     }, checkInterval);

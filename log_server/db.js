@@ -6,6 +6,7 @@ var _ = require('lodash');
 var async = require('async');
 var logDict = {};
 var saveInterval = 10 * 1000;
+var emitter = require('./emitter');
 
 /**
  * [save 保存数据（定时对log保存到数据库，间隔10s）]
@@ -80,7 +81,11 @@ function add(name, msg){
     logDict[name] = [];
   }
   logDict[name].push(msg);
-  console.dir(msg);
+  emitter.emit(name, msg);
 }
 
 _.delay(save, saveInterval);
+
+setInterval(function(){
+  add('test', '[I][helpers/monitor:44] lag.vicanso.0 2014-12-31 13:58:40.101');
+}, 5000);

@@ -65,8 +65,8 @@ var initServer = function(){
   monitor.start(monitorInterval);
 
   var app = express();
-
-  io.init(app);
+  var server = io.init(app);
+  
 
   
   initAppSetting(app);
@@ -127,8 +127,10 @@ var initServer = function(){
 
   
 
-  app.listen(config.port);
-  console.log('server listen on:' + config.port);
+  server.listen(config.port, function(){
+    console.log('server listen on:' + config.port);
+  });
+  
 };
 
 exports.start = function(){
